@@ -27,7 +27,7 @@ switch($_GET['e'])
             {
                 $message = 'Veuillez renseigner un login et mot de passe incorrect';
             }
-            header('membres.php?message='.urlencode($message));
+            header('location:membres.php?message='.urlencode($message));
             exit;
         }
 

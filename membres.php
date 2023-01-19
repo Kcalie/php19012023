@@ -17,7 +17,7 @@ require('core/function.php');
     <?php
         if(isset($_GET['message']))
         {
-            $message = urlencode($_GET['message']);
+            $message = urldecode($_GET['message']);
             echo '<div style="background:red;width:100%;border-radius:30px;color:white;">'.$message.'</div>';
         }
     ?>

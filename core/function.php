@@ -35,8 +35,8 @@ $motdepasses = array('12345','epad','laguna','css');
 function verifConnect($login,$password)
 {
     global $identifiants;
-    global $motdepasse;
-    if(in_array($login,$identifiants) && in_array($password,$motdepasse))
+    global $motdepasses;
+    if(in_array($login,$identifiants) && in_array($password,$motdepasses))
     {
         return true;
     }
