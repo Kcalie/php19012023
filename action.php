@@ -32,5 +32,32 @@ switch($_GET['e'])
         }
 
     break;
+
+    case 'deco':
+
+        $_SESSION['connect'] = 0;
+        setcookie('login',null,(time()-10));
+        setcookie('password',null,(time()-10));
+        header('location:membres.php');
+
+        break;
+
+    case 'upload':
+
+        if(isset($_POST['submit']))
+        {
+            // verif si un fichier a été envoyer
+            if(is_uploaded_file($_FILES['fichier']['tmp_name']))
+            {
+                $etat_fichier = uploadFichier($_FILES['fichier']);
+                if($etat_fichier)
+                {
+                    $message = 'Fichier envoyer avec succès';
+                    header('location:prive.php?message='.urlencode($message));
+                }
+            }
+        }
+
+        break;
 }
 ?>

@@ -1,6 +1,13 @@
 <?php 
 session_start();
 require('core/function.php');
+// on verifie si la personne est deja connécté
+if($_SESSION['connect'] == 1 && (!empty($_COOKIE['login']) || !empty($_COOKIE['password'])))
+{
+    // si c'est le cas redirection vars la page prive.php
+    header('location:prive.php');
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

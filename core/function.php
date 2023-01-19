@@ -44,4 +44,24 @@ function verifConnect($login,$password)
         return false;
     }
 }
+$extensions = array('.pdf','.png','.jpg','.mp4','.gif'); // sensible a la casse !!!! mettre aussi en majuscules
+function uploadFichier($fichier)
+{
+    global $extensions;
+    $verif_extension = strrchr($fichier['name'],'.');
+    if(in_array($verif_extension,$extensions))
+    {
+        // verif si le dossier de l'user existe
+        if(!is_dir('upload/'.$_COOKIE['login']))
+        {
+            // si il existe âs on le créer
+            mkdir('upload/'.$_COOKIE['login']);
+        }
+        // on transfere notre fichier dans son dossier (envoye de fichier)
+        if(move_uploaded_file($fichier['tmp_name'],'upload/'.$_COOKIE['login'].'/'.$fichier['name']))
+        {
+            return true;
+        }
+    }
+}
 ?>
