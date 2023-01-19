@@ -59,5 +59,14 @@ switch($_GET['e'])
         }
 
         break;
+
+    case 'deletefichier':
+            if(!empty($_GET['fichier']))
+            {
+                unlink('upload/'.$_COOKIE['login'].'/'.$_GET['fichier']);
+                header('location:prive.php');
+                exit;
+            }
+        break;
 }
 ?>

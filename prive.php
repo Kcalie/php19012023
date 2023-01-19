@@ -21,6 +21,26 @@ if($_SESSION['connect'] != 1 && (empty($_COOKIE['login']) || empty($_COOKIE['pas
     <?php include('inc/header.php'); ?>
     <h1>bonjour <?php echo $_COOKIE['login']; ?></h1>
 
+    <?php 
+    // on recup l'ensemble des fichiers
+    $liste_fichiers = scandir('upload/'.$_COOKIE['login']);
+    if($liste_fichiers)
+    {
+        echo '<ul>';
+        $i=0;
+        foreach($liste_fichiers as $fichier)
+        {
+            if($i>1)
+            {
+                echo '<li><a href="upload/'.$_COOKIE['login'].'/'.$fichier.'" target="_blank">'.$fichier.'</a><a href="action.php?e=deletefichier&fichier='.$fichier.'"><img src="assets/images/corbeille.png"><a/></li>';
+            }
+            
+            $i++;
+        }
+        echo '<ul>';
+    }
+    ?>
+
     <form method="post" action="action.php?e=upload" enctype="multipart/form-data">
         <label for="fichier">ajouter un fichier</label>
         <input type="file" name="fichier" />
