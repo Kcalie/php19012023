@@ -19,5 +19,29 @@ function afficheMenu($emplacement='header')
             $str.= '<li><a href="'.$lien.'">'.$titre.'</a></li>';
         }
     }
+    else if($emplacement=='footer')
+    {
+        global $menu_footer;
+        foreach($menu_footer as $lien => $titre)
+        {
+            $str.= '<li><a href="'.$lien.'">'.$titre.'</a></li>'; 
+        }
+    }
+    $str.= '<ul>';
+    return $str;
+}
+$identifiants = array('admin','joseph','kevin','gerald');
+$motdepasses = array('12345','epad','laguna','css');
+function verifConnect($login,$password)
+{
+    global $identifiants;
+    global $motdepasse;
+    if(in_array($login,$identifiants) && in_array($password,$motdepasse))
+    {
+        return true;
+    }
+    else{
+        return false;
+    }
 }
 ?>
